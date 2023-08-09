@@ -112,7 +112,7 @@ function storeData(e){
     name:Name.value,
     email:email.value
   }
-  localStorage.setItem("details",JSON.stringify(detailsObj));
+  localStorage.setItem(email.value,JSON.stringify(detailsObj));
 }
-console.log(JSON.parse(localStorage.getItem("details")))
+// console.log(JSON.parse(localStorage.getItem("details")))
 
