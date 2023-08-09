@@ -104,10 +104,15 @@
 var Name=document.getElementById("name");
 var email=document.getElementById("email")
 var form=document.getElementById("my-form");
+
 form.addEventListener("submit",storeData);
 function storeData(e){
   e.preventDefault();
-  localStorage.setItem("name",Name.value);
-  localStorage.setItem("email",email.value);
+  let detailsObj={
+    name:Name.value,
+    email:email.value
+  }
+  localStorage.setItem("details",JSON.stringify(detailsObj));
 }
+console.log(JSON.parse(localStorage.getItem("details")))
 
