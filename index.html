@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h2>Book a call</h2>
+        <p>
+          Book a call slot and our representatives will call you within 1hr of
+          selected time
+        </p>
+      </div>
+      <form class="callForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+        <label for="phone">Phone</label>
+        <input type="number" id="phone" />
+        <label for="time">Time</label>
+        <input type="time" id="time" />
+        <button onclick="submitHandler(event)">Get a call</button>
+        <button>Sample</button>
+      </form>
+    </div>
+    
+    <style>
+        body{
+            background-image: url(240_F_81353111_RHDo5ABCfUCnQpiSqJmAI6bzrIiF11rI.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .container {
+            background-color: aquamarine;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width:50%;
+            margin:0 auto;
+            border:2px solid black;
+            border-radius: 10px;
+            padding:2rem;
+        }
+        .container h2{
+          color: rgb(13, 25, 240);
+        }
+        .container p{
+          color:rgb(43, 9, 237)
+        }
+        .heading{
+          background-color:rgb(22, 220, 184);
+          padding:1rem;
+          border: 2px saddlebrown;
+        }
+        .callForm{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            gap:5px;
+        }
+        .callForm input{
+          height:30px;
+          background-color:rgb(149, 243, 186);
+          border:1px solid black;
+          border-radius: 4px;
+        }
+        .callForm button{
+            margin-top: 1rem;
+            padding:0.5rem;
+            background-color: rgb(212, 223, 17);
+            width:60%;
+            margin:0.5rem auto;
+            border: 1px solid black;
+            border-radius: 5px;
+            color:white;
+            font-size: medium;
+            font-weight: 600; 
+        }
+        .callForm button:hover{
+          background-color: red;
+          cursor: pointer;
+        }
+
+    </style>
+  </body>
+</html>
+<script>
+function submitHandler(event){
+    event.preventDefault();
+    let name=document.getElementById("name").value
+    let email=document.getElementById("email").value
+    let phone=document.getElementById("phone").value
+    let time=document.getElementById("time").value
+    console.log("Name :",name)
+    console.log("Email :",email)
+    console.log("Phone :",phone)
+    console.log("Time :",time)
+
+}
+</script>
