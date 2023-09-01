@@ -92,15 +92,15 @@
         let email=document.getElementById("email").value
         let phone=document.getElementById("phone").value
         let time=document.getElementById("time").value
-        const appointmentObj={
+        const appointment={
           name:name,
           email:email,
           phone:phone,
           time:time
         }
-        axios.post('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment',appointmentObj)
+        axios.post('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment',appointment)
         .then(res=>console.log(res))
-        .catch(err=>console.log(err))
+        .catch(err=>console.log(err));
       }
     </script>
   </body>
