@@ -105,11 +105,34 @@
             var name=document.createTextNode(element.name+"-------");
             var email=document.createTextNode(element.email+"-------");
             var phone=document.createTextNode(element.phone);
+            var editBtn=document.createElement('button');
+            editBtn.appendChild(document.createTextNode("Edit"));
+            editBtn.addEventListener('click',editAppointment);
+
             var deleteBtn=document.createElement('button');
             deleteBtn.appendChild(document.createTextNode("Delete"));
             deleteBtn.addEventListener('click',deleteAppointment);
 
             var id=element._id;
+            function editAppointment(event){
+                event.preventDefault();
+                let name=document.getElementById("name")
+                let email=document.getElementById("email")
+                let phone=document.getElementById("phone")
+                let time=document.getElementById("time")
+
+                name.value=element.name;
+                email.value=element.email;
+                phone.value=element.phone;
+                time.value=element.time;
+
+                axios.delete('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment/'+id)
+                .then(res=>{
+                  console.log(res);
+                  getAppointments();
+                })
+                .catch(err=>console.log(err))
+            }
             function deleteAppointment(event,element){
               event.preventDefault();
               
@@ -117,6 +140,7 @@
               .then(res=>{
                 console.log(res)
                 getAppointments();
+                return res;
               })
               .catch(err=>console.log(err));
 
@@ -124,6 +148,7 @@
             app.appendChild(name);
             app.appendChild(email);
             app.appendChild(phone);
+            app.appendChild(editBtn);
             app.appendChild(deleteBtn);
 
             appointmentsDiv.appendChild(app);
