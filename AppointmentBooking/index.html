@@ -24,6 +24,7 @@
         <button onclick="submitHandler(event)">Get a call</button>
       </form>
     </div>
+    <div id="appointments"></div>
     
     <style>
         body{
@@ -86,6 +87,21 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
     <script>
+      function getAppointments(){
+        var appointments;
+        axios.get('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment')
+        .then(res=>{
+          console.log(res);
+          appointments=res.data;
+          return appointments;
+        })
+        .then((appointments)=>{
+          var appointmentsDiv=document.getElementById("appointments");
+          appointmentsDiv.innerText=JSON.stringify(appointments);
+        })
+        .catch(err=>console.log(err));
+      }
+      getAppointments();
       function submitHandler(event){
         event.preventDefault();
         let name=document.getElementById("name").value
