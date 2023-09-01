@@ -89,6 +89,7 @@
     <script>
       function getAppointments(){
         var appointments;
+        
         axios.get('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment')
         .then(res=>{
           console.log(res);
@@ -97,7 +98,37 @@
         })
         .then((appointments)=>{
           var appointmentsDiv=document.getElementById("appointments");
-          appointmentsDiv.innerText=JSON.stringify(appointments);
+          appointmentsDiv.innerHTML="";
+          // appointmentsDiv.innerText=JSON.stringify(appointments);
+          appointments.forEach(element => {
+            var app=document.createElement('div');
+            var name=document.createTextNode(element.name+"-------");
+            var email=document.createTextNode(element.email+"-------");
+            var phone=document.createTextNode(element.phone);
+            var deleteBtn=document.createElement('button');
+            deleteBtn.appendChild(document.createTextNode("Delete"));
+            deleteBtn.addEventListener('click',deleteAppointment);
+
+            var id=element._id;
+            function deleteAppointment(event,element){
+              event.preventDefault();
+              
+              axios.delete('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment/'+id)
+              .then(res=>{
+                console.log(res)
+                getAppointments();
+              })
+              .catch(err=>console.log(err));
+
+            }
+            app.appendChild(name);
+            app.appendChild(email);
+            app.appendChild(phone);
+            app.appendChild(deleteBtn);
+
+            appointmentsDiv.appendChild(app);
+            
+          });
         })
         .catch(err=>console.log(err));
       }
@@ -115,8 +146,12 @@
           time:time
         }
         axios.post('https://crudcrud.com/api/19183dd1da9f4a1c8ae92a7099712f0b/appointment',appointment)
-        .then(res=>console.log(res))
+        .then(res=>{
+          console.log(res);
+          getAppointments();
+        })
         .catch(err=>console.log(err));
+
       }
     </script>
   </body>
