@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>E-Commerce Seller Dashboard</title>
+    </head>
+    <body>
+        <div class="product-form">
+            <form onsubmit="addProductHandler(event)">
+                <label for="product-name">Product Name</label>
+                <input type="text" name="product-name" id="product-name"/>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price"/>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+        <h3>Products</h3>
+        <div id="products-list">
+        </div>
+        <h3>Worth of Products</h3>
+        <div id="total-worth">
+            <p>Total worth of the products is :</p><p class="worth"></p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
